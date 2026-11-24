@@ -1,0 +1,37 @@
+{
+  "modelo_id": "C001_20261124T234632Z_random_forest",
+  "algoritmo": "random_forest",
+  "chave": "modelo_B",
+  "cycle_id": "C001_20261124T234632Z",
+  "data_version": "v001_8c382cd5af",
+  "features": [
+    "num__tempo_contrato_meses",
+    "cat__tipo_contrato_mensal",
+    "num__mensalidade",
+    "num__chamados_suporte_3m",
+    "num__chamados_por_ano",
+    "cat__tipo_contrato_bianual",
+    "num__atraso_pagamentos_6m",
+    "num__gasto_por_servico",
+    "num__tem_atraso",
+    "num__satisfacao"
+  ],
+  "metrica": "f1_macro",
+  "valor_cv": 0.679246774604465,
+  "valor_teste": 0.6804356321253207,
+  "run_id": "1d53a57a31684d42abff378a9456ab5e",
+  "caminho_modelo": "models/historico/C001_20261124T234632Z_random_forest.joblib",
+  "promovido_em_utc": "2026-11-24T23:46:49+00:00",
+  "decisao": "promovido",
+  "motivo": "não havia modelo vigente (primeiro ciclo)",
+  "modelo_anterior": null,
+  "ultima_avaliacao": {
+    "cycle_id": "C001_20261124T234632Z",
+    "data_version": "v001_8c382cd5af",
+    "decisao": "promovido",
+    "motivo": "não havia modelo vigente (primeiro ciclo)",
+    "teste_candidato": 0.6804356321253207,
+    "teste_vigente": null,
+    "delta_teste": null
+  }
+}

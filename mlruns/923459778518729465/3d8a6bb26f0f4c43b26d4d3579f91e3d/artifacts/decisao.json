@@ -1,0 +1,76 @@
+{
+  "cycle_id": "C001_20261124T234632Z",
+  "data_version": "v001_8c382cd5af",
+  "gatilho": "workflow_dispatch",
+  "github_run_id": "45512629978",
+  "github_run_url": "https://github.com/SamuelMorsch/Projeto-Integrador-de-MLOps/actions/runs/45512629978",
+  "features_eleitas": [
+    "num__tempo_contrato_meses",
+    "cat__tipo_contrato_mensal",
+    "num__mensalidade",
+    "num__chamados_suporte_3m",
+    "num__chamados_por_ano",
+    "cat__tipo_contrato_bianual",
+    "num__atraso_pagamentos_6m",
+    "num__gasto_por_servico",
+    "num__tem_atraso",
+    "num__satisfacao"
+  ],
+  "eleicao_vencedor": {
+    "vencedor": "modelo_B",
+    "motivo": "maior média de CV",
+    "cv_A": 0.6717159011501028,
+    "cv_B": 0.679246774604465,
+    "metrica": "f1_macro"
+  },
+  "cv": {
+    "modelo_A": {
+      "f1_macro": 0.6717159011501028,
+      "accuracy": 0.7401013513513515,
+      "precision_macro": 0.663153476172543,
+      "recall_macro": 0.7398903765609713,
+      "roc_auc": 0.8145189605895423
+    },
+    "modelo_B": {
+      "f1_macro": 0.679246774604465,
+      "accuracy": 0.7642628205128205,
+      "precision_macro": 0.6657139354588665,
+      "recall_macro": 0.7217049107637734,
+      "roc_auc": 0.7970393357528087
+    }
+  },
+  "metricas_teste_vencedor": {
+    "f1_macro": 0.6804356321253207,
+    "accuracy": 0.7378964941569283,
+    "precision_macro": 0.6720872439501049,
+    "recall_macro": 0.7366142515923566,
+    "roc_auc": 0.8145567940552018
+  },
+  "metricas_teste_vigente_anterior": null,
+  "decisao": {
+    "piso_metrica_cv": 0.6,
+    "limiar_melhoria": 0.005,
+    "cv_vencedor": 0.679246774604465,
+    "teste_vencedor": 0.6804356321253207,
+    "teste_vigente": null,
+    "delta_teste": null,
+    "decisao": "promovido",
+    "motivo": "não havia modelo vigente (primeiro ciclo)"
+  },
+  "modelo_vigente_apos_ciclo": "C001_20261124T234632Z_random_forest",
+  "run_ids": {
+    "etl": "212eae2d4d564fd2893396fe4142c1eb",
+    "votacao": "2e5770e8b687435eb050c7190adfd26c",
+    "modelo_A": "353780be64b840568aa22a06c6630e2f",
+    "modelo_B": "1d53a57a31684d42abff378a9456ab5e"
+  },
+  "drift": {
+    "avaliado": false,
+    "motivo": "ciclo inicial: usa apenas os dados já presentes em data/raw",
+    "max_psi": 0.0,
+    "n_features_alerta": 0,
+    "n_features_atencao": 0,
+    "alerta": false,
+    "features_em_alerta": []
+  }
+}

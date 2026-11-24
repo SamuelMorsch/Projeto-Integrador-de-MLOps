@@ -1,0 +1,9 @@
+{
+  "avaliado": false,
+  "motivo": "ciclo inicial: usa apenas os dados já presentes em data/raw",
+  "max_psi": 0.0,
+  "n_features_alerta": 0,
+  "n_features_atencao": 0,
+  "alerta": false,
+  "features_em_alerta": []
+}

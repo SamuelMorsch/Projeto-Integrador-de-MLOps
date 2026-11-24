@@ -1,0 +1,85 @@
+{
+  "cycle_id": "C001_20261124T234632Z",
+  "data_version": "v001_8c382cd5af",
+  "folds": [
+    {
+      "fold": 0,
+      "eleitas": [
+        "num__tempo_contrato_meses",
+        "cat__tipo_contrato_mensal",
+        "cat__tipo_contrato_bianual",
+        "num__chamados_por_ano",
+        "num__gasto_por_servico",
+        "num__mensalidade",
+        "num__atraso_pagamentos_6m",
+        "num__satisfacao",
+        "num__chamados_suporte_3m"
+      ],
+      "n_colunas": 36
+    },
+    {
+      "fold": 1,
+      "eleitas": [
+        "num__tempo_contrato_meses",
+        "cat__tipo_contrato_mensal",
+        "num__chamados_suporte_3m",
+        "num__satisfacao",
+        "num__chamados_por_ano",
+        "num__mensalidade",
+        "num__atraso_pagamentos_6m",
+        "num__gasto_por_servico",
+        "num__num_servicos",
+        "num__uso_dados_gb"
+      ],
+      "n_colunas": 36
+    },
+    {
+      "fold": 2,
+      "eleitas": [
+        "num__tempo_contrato_meses",
+        "cat__tipo_contrato_mensal",
+        "cat__tipo_contrato_bianual",
+        "num__satisfacao",
+        "num__chamados_por_ano",
+        "num__gasto_por_servico",
+        "num__mensalidade",
+        "num__chamados_suporte_3m",
+        "num__idade",
+        "num__num_servicos"
+      ],
+      "n_colunas": 36
+    },
+    {
+      "fold": 3,
+      "eleitas": [
+        "num__tempo_contrato_meses",
+        "cat__tipo_contrato_mensal",
+        "num__satisfacao",
+        "num__atraso_pagamentos_6m",
+        "num__chamados_por_ano",
+        "num__chamados_suporte_3m",
+        "num__mensalidade",
+        "cat__tipo_contrato_bianual",
+        "num__idade",
+        "num__gasto_por_servico"
+      ],
+      "n_colunas": 36
+    },
+    {
+      "fold": 4,
+      "eleitas": [
+        "num__tempo_contrato_meses",
+        "cat__tipo_contrato_mensal",
+        "num__mensalidade",
+        "num__chamados_suporte_3m",
+        "num__chamados_por_ano",
+        "cat__tipo_contrato_bianual",
+        "num__satisfacao",
+        "num__idade",
+        "num__atraso_pagamentos_6m",
+        "cat__plano_premium"
+      ],
+      "n_colunas": 36
+    }
+  ]
+}
