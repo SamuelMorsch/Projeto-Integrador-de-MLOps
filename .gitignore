@@ -1,0 +1,21 @@
+# Ambientes e caches
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+.DS_Store
+
+# Segredos (nunca versionar tokens/senhas)
+.env
+*.pem
+secrets*
+
+# Dados intermediários do ciclo (regeneráveis a partir de data/raw)
+data/processed/*
+!data/processed/.gitkeep
+
+# ATENÇÃO: mlruns/, models/, evidencias/ e data/raw/ SÃO versionados de propósito:
+# são o estado persistente entre ciclos do pipeline (runners do Actions são temporários).

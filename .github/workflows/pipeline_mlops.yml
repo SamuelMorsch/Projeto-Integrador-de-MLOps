@@ -1,0 +1,109 @@
+# =============================================================================
+# UM ÚNICO workflow para o pipeline MLOps completo (Trabalho N3).
+# Sequência: schedule -> dados novos -> ETL -> votação -> treino A/B -> eleição/promoção -> previsões.
+# Qualquer falha interrompe o job (nada é commitado), impedindo promoção indevida.
+# Estado persistente entre ciclos (runners são temporários): o próprio repositório
+# (data/raw, models/, evidencias/, mlruns/) + artifact baixável do ciclo.
+# =============================================================================
+name: pipeline-mlops
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"      # a cada 3 horas (UTC). Ajuste conforme o prazo; o GitHub pode atrasar alguns minutos.
+  workflow_dispatch:             # execução manual SÓ para depuração (não substitui a prova do schedule)
+
+permissions:
+  contents: write                # commit do estado do ciclo
+  issues: write                  # alerta de drift (critério 10)
+
+concurrency:
+  group: pipeline-mlops          # nunca dois ciclos ao mesmo tempo
+  cancel-in-progress: false
+
+env:
+  PIPELINE_TRIGGER: ${{ github.event_name }}   # 'schedule' comprova a execução agendada (gravado no MLflow e no histórico)
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Obter código e estado persistente (dados, modelo vigente, mlruns)
+        uses: actions/checkout@v4
+
+      - name: Preparar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m ipykernel install --user --name python3
+
+      - name: Conferir estado herdado e ajustar caminhos do MLflow
+        run: |
+          echo "Modelo vigente herdado:"; cat models/modelo_vigente.json 2>/dev/null || echo "(nenhum: primeiro ciclo)"
+          echo "Ciclos anteriores:"; ls evidencias 2>/dev/null | grep '^C' || echo "(nenhum)"
+          python -m src.rastreio rebase
+
+      - name: Testes unitários rápidos
+        run: python -m pytest -q tests
+
+      - name: "01 - ETL, ingestão de dados novos, drift"
+        run: jupyter nbconvert --to notebook --execute notebooks/01_etl.ipynb --output 01_executado.ipynb --output-dir evidencias/notebooks_executados --ExecutePreprocessor.timeout=1800
+
+      - name: "02 - Três métodos e votação de features"
+        run: jupyter nbconvert --to notebook --execute notebooks/02_votacao_features.ipynb --output 02_executado.ipynb --output-dir evidencias/notebooks_executados --ExecutePreprocessor.timeout=1800
+
+      - name: "03 - Treino e competição entre os dois algoritmos"
+        run: jupyter nbconvert --to notebook --execute notebooks/03_treino_competicao.ipynb --output 03_executado.ipynb --output-dir evidencias/notebooks_executados --ExecutePreprocessor.timeout=1800
+
+      - name: "04 - Eleição do vencedor e promoção controlada"
+        run: jupyter nbconvert --to notebook --execute notebooks/04_selecao_promocao.ipynb --output 04_executado.ipynb --output-dir evidencias/notebooks_executados --ExecutePreprocessor.timeout=1800
+
+      - name: "05 - Previsões com o modelo vigente e teste integrado"
+        run: jupyter nbconvert --to notebook --execute notebooks/05_previsoes.ipynb --output 05_executado.ipynb --output-dir evidencias/notebooks_executados --ExecutePreprocessor.timeout=1800
+
+      - name: Resumo do ciclo (Job Summary) e alerta de drift
+        id: resumo
+        run: python -m src.resumo_ciclo
+
+      - name: Publicar pacote de resultados (artifact baixável)
+        uses: actions/upload-artifact@v4
+        with:
+          name: resultados-ciclo-${{ github.run_number }}
+          path: |
+            mlruns
+            evidencias
+            models
+            data/raw
+            data/scoring
+          retention-days: 90
+
+      - name: Alerta de drift (issue no repositório)
+        if: steps.resumo.outputs.drift_alerta == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ARQ="${{ steps.resumo.outputs.arquivo_alerta }}"
+          EXISTENTE=$(gh issue list --state open --search "Alerta de drift de dados in:title" --json number --jq '.[0].number')
+          if [ -n "$EXISTENTE" ]; then
+            gh issue comment "$EXISTENTE" --body-file "$ARQ"
+          else
+            gh issue create --title "Alerta de drift de dados (monitoramento do pipeline)" --body-file "$ARQ"
+          fi
+
+      - name: Persistir estado do ciclo (commit)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/raw data/scoring data/incoming models evidencias mlruns
+          if git diff --cached --quiet; then echo "Sem mudanças para commitar."; exit 0; fi
+          git commit -m "chore(pipeline): ${{ steps.resumo.outputs.cycle_id }} - ${{ steps.resumo.outputs.decisao }} [skip ci]"
+          git pull --rebase origin "${{ github.ref_name }}"
+          git push origin "HEAD:${{ github.ref_name }}"

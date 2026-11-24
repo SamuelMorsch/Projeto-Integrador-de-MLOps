@@ -1,0 +1,110 @@
+# =============================================================================
+# Configuração única do pipeline MLOps (Trabalho N3 - Análise Preditiva)
+# Tudo o que define a avaliação (métrica, direção, protocolo, regra de votação
+# e limiar de promoção) está declarado AQUI, antes de qualquer treinamento.
+# =============================================================================
+
+projeto:
+  nome: "N3 - Previsão de churn (pipeline MLOps agendado)"
+  experimento_mlflow: "n3_churn_mlops"
+  seed: 42
+
+# -----------------------------------------------------------------------------
+# Etapa 1 - Problema e dados
+# Problema: classificação binária. Unidade de observação: 1 cliente.
+# Dados SINTÉTICOS (gerados por src/simulador.py, seed fixa, sem dados pessoais).
+# -----------------------------------------------------------------------------
+dados:
+  dir_raw: "data/raw"
+  dir_incoming: "data/incoming"     # novos lotes em CSV podem ser depositados aqui
+  dir_processed: "data/processed"
+  dir_scoring: "data/scoring"
+  coluna_id: "id_cliente"
+  alvo: "churn"
+  # Regras de domínio (fixas, não aprendidas dos dados => sem vazamento).
+  # Valor fora da faixa vira ausente e é imputado depois, só com estatística do treino.
+  faixas_validas:
+    idade: [18, 100]
+    tempo_contrato_meses: [0, 120]
+    mensalidade: [20, 600]
+    num_servicos: [1, 8]
+    uso_dados_gb: [0, 1500]
+    chamados_suporte_3m: [0, 30]
+    atraso_pagamentos_6m: [0, 6]
+    satisfacao: [1, 5]
+    numero_dependentes: [0, 8]
+
+ingestao:
+  modo: "auto"            # auto: usa CSV de data/incoming se existir; senão simula
+  reenvio_registros: 12   # nº de registros antigos reenviados no lote (testa deduplicação)
+
+simulacao:
+  ativa: true
+  tamanho_lote_inicial: 3000
+  tamanho_lote: 800
+  tamanho_scoring: 150
+  max_lotes: 12
+  seed_base: 2026
+
+# -----------------------------------------------------------------------------
+# Protocolo de avaliação (definido antes do treino)
+# -----------------------------------------------------------------------------
+avaliacao:
+  metrica: "f1_macro"
+  direcao: "maximizar"
+  fracao_teste: 0.20          # teste definido por hash do id: nunca entra no treino
+  cv_folds: 5                 # validação cruzada estratificada, SOMENTE no treino
+  empate_epsilon: 0.002       # diferença de CV menor que isso = empate (vence o modelo A, mais simples)
+
+# -----------------------------------------------------------------------------
+# Etapa 3 - Três métodos + votação
+# -----------------------------------------------------------------------------
+selecao_features:
+  k_por_metodo: 10            # cada método elege seus 10 melhores atributos
+  metodos: ["selectkbest_mi", "random_forest", "rfe_logreg"]
+  regra_votacao: "maioria_2_de_3"
+  min_votos: 2                # atributo eleito se tiver >= 2 votos
+  min_features: 6             # piso: se faltar, completa por votos e escore médio normalizado
+  max_features: 14            # teto: se exceder, corta por votos e escore médio normalizado
+  rf_n_estimators: 200
+
+# -----------------------------------------------------------------------------
+# Etapa 4 - Dois algoritmos disputam o modelo (mesmas features, mesmo protocolo)
+# -----------------------------------------------------------------------------
+algoritmos:
+  modelo_A:
+    nome: "regressao_logistica"
+    params:
+      C: 1.0
+      max_iter: 2000
+      class_weight: "balanced"
+  modelo_B:
+    nome: "random_forest"
+    params:
+      n_estimators: 150
+      max_depth: 8
+      min_samples_leaf: 5
+      class_weight: "balanced"
+      n_jobs: 1
+
+# -----------------------------------------------------------------------------
+# Etapa 5 - Regra de promoção
+# O vencedor do ciclo (decidido por CV no treino) é confrontado com o vigente no
+# CONJUNTO DE TESTE do ciclo (mesmos registros, mesmo protocolo). Promove se:
+#   (1) CV do vencedor >= piso_metrica_cv; e
+#   (2) metrica_teste(vencedor) - metrica_teste(vigente) >= limiar_melhoria.
+# Sem vigente => promove (primeiro modelo), desde que cumpra o piso.
+# -----------------------------------------------------------------------------
+promocao:
+  piso_metrica_cv: 0.60
+  limiar_melhoria: 0.005
+
+# -----------------------------------------------------------------------------
+# Critério 10 - Monitoramento de drift com alerta
+# PSI: < aviso = estável; entre aviso e alerta = atenção; >= alerta = ALERTA.
+# -----------------------------------------------------------------------------
+drift:
+  n_bins: 10
+  psi_aviso: 0.10
+  psi_alerta: 0.25
+  min_features_alerta: 1      # nº de atributos em alerta para disparar o alerta do ciclo
