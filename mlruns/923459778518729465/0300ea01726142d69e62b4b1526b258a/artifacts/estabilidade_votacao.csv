@@ -1,0 +1,12 @@
+feature,folds_eleita,eleita_no_ciclo
+cat__tipo_contrato_bianual,5,1
+cat__tipo_contrato_mensal,5,1
+num__chamados_por_ano,5,1
+num__chamados_suporte_3m,5,1
+num__mensalidade,5,1
+num__tempo_contrato_meses,5,1
+num__atraso_pagamentos_6m,4,1
+num__gasto_por_servico,4,1
+num__idade,3,1
+num__satisfacao,3,1
+num__num_servicos,2,0

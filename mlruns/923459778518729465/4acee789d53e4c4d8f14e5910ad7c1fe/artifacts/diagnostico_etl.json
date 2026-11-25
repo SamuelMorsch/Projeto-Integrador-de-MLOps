@@ -1,0 +1,60 @@
+{
+  "antes": {
+    "linhas": 4693,
+    "duplicadas_exatas": 93,
+    "ids_repetidos": 93,
+    "ausentes_por_coluna": {
+      "forma_pagamento": 70,
+      "uso_dados_gb": 94,
+      "satisfacao": 140
+    },
+    "valores_fora_da_faixa": {
+      "idade": 26,
+      "tempo_contrato_meses": 19,
+      "mensalidade": 13,
+      "uso_dados_gb": 18
+    },
+    "outliers_iqr3": {
+      "idade": 17,
+      "num_servicos": 19,
+      "uso_dados_gb": 47,
+      "chamados_suporte_3m": 18,
+      "atraso_pagamentos_6m": 1
+    },
+    "taxa_alvo": 0.20477306626891115
+  },
+  "limpeza": {
+    "linhas_entrada": 4693,
+    "removidas_duplicadas_exatas": 93,
+    "removidas_id_repetido": 0,
+    "removidas_sem_alvo": 0,
+    "linhas_saida": 4600
+  },
+  "depois": {
+    "linhas": 4600,
+    "duplicadas_exatas": 0,
+    "ids_repetidos": 0,
+    "ausentes_por_coluna": {
+      "idade": 26,
+      "forma_pagamento": 69,
+      "tempo_contrato_meses": 18,
+      "mensalidade": 13,
+      "uso_dados_gb": 110,
+      "satisfacao": 138
+    },
+    "valores_fora_da_faixa": {},
+    "outliers_iqr3": {
+      "num_servicos": 19,
+      "uso_dados_gb": 31,
+      "chamados_suporte_3m": 18,
+      "atraso_pagamentos_6m": 1
+    },
+    "taxa_alvo": 0.20456521739130434
+  },
+  "ingestao": {
+    "origem": "simulado",
+    "arquivo": "lote_002.csv",
+    "linhas_recebidas": 824,
+    "indice_lote": 2
+  }
+}

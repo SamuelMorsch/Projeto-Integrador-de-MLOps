@@ -27,12 +27,12 @@
   "motivo": "melhora de 0.0085 >= limiar 0.005",
   "modelo_anterior": "C001_20261124T234632Z_random_forest",
   "ultima_avaliacao": {
-    "cycle_id": "C002_20261125T083010Z",
-    "data_version": "v002_e6352cb52b",
-    "decisao": "promovido",
-    "motivo": "melhora de 0.0085 >= limiar 0.005",
-    "teste_candidato": 0.686197586479512,
-    "teste_vigente": 0.6777363819177841,
-    "delta_teste": 0.008461204561727942
+    "cycle_id": "C003_20261125T191557Z",
+    "data_version": "v003_d73cde0298",
+    "decisao": "mantido",
+    "motivo": "melhora de -0.0155 < limiar 0.005; vigente preservado",
+    "teste_candidato": 0.6757283945547502,
+    "teste_vigente": 0.6912752055874732,
+    "delta_teste": -0.01554681103272304
   }
 }

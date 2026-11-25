@@ -1,0 +1,82 @@
+{
+  "cycle_id": "C003_20261125T191557Z",
+  "data_version": "v003_d73cde0298",
+  "folds": [
+    {
+      "fold": 0,
+      "eleitas": [
+        "num__chamados_por_ano",
+        "num__tempo_contrato_meses",
+        "cat__tipo_contrato_mensal",
+        "num__chamados_suporte_3m",
+        "cat__tipo_contrato_bianual",
+        "num__gasto_por_servico",
+        "num__atraso_pagamentos_6m",
+        "num__mensalidade",
+        "num__num_servicos"
+      ],
+      "n_colunas": 36
+    },
+    {
+      "fold": 1,
+      "eleitas": [
+        "num__tempo_contrato_meses",
+        "cat__tipo_contrato_mensal",
+        "num__chamados_suporte_3m",
+        "num__satisfacao",
+        "num__mensalidade",
+        "num__chamados_por_ano",
+        "num__idade",
+        "cat__tipo_contrato_bianual",
+        "num__atraso_pagamentos_6m"
+      ],
+      "n_colunas": 36
+    },
+    {
+      "fold": 2,
+      "eleitas": [
+        "num__chamados_por_ano",
+        "num__tempo_contrato_meses",
+        "cat__tipo_contrato_mensal",
+        "num__mensalidade",
+        "cat__tipo_contrato_bianual",
+        "num__idade",
+        "num__satisfacao",
+        "num__chamados_suporte_3m",
+        "num__gasto_por_servico",
+        "num__atraso_pagamentos_6m"
+      ],
+      "n_colunas": 36
+    },
+    {
+      "fold": 3,
+      "eleitas": [
+        "num__tempo_contrato_meses",
+        "num__chamados_por_ano",
+        "cat__tipo_contrato_mensal",
+        "cat__tipo_contrato_bianual",
+        "num__satisfacao",
+        "num__gasto_por_servico",
+        "num__chamados_suporte_3m",
+        "num__mensalidade",
+        "num__num_servicos",
+        "num__idade"
+      ],
+      "n_colunas": 36
+    },
+    {
+      "fold": 4,
+      "eleitas": [
+        "num__tempo_contrato_meses",
+        "num__chamados_por_ano",
+        "cat__tipo_contrato_mensal",
+        "num__chamados_suporte_3m",
+        "num__gasto_por_servico",
+        "cat__tipo_contrato_bianual",
+        "num__mensalidade",
+        "num__atraso_pagamentos_6m"
+      ],
+      "n_colunas": 36
+    }
+  ]
+}
