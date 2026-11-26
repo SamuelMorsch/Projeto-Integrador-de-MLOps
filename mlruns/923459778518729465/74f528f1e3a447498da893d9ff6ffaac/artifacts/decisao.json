@@ -1,0 +1,89 @@
+{
+  "cycle_id": "C004_20261126T033330Z",
+  "data_version": "v004_58bb9be60f",
+  "gatilho": "schedule",
+  "github_run_id": "45749596261",
+  "github_run_url": "https://github.com/SamuelMorsch/Projeto-Integrador-de-MLOps/actions/runs/45749596261",
+  "features_eleitas": [
+    "num__tempo_contrato_meses",
+    "cat__tipo_contrato_mensal",
+    "num__chamados_suporte_3m",
+    "num__satisfacao",
+    "num__chamados_por_ano",
+    "num__gasto_por_servico",
+    "num__mensalidade",
+    "cat__tipo_contrato_bianual",
+    "num__atraso_pagamentos_6m",
+    "num__idade",
+    "cat__tipo_contrato_anual"
+  ],
+  "eleicao_vencedor": {
+    "vencedor": "modelo_B",
+    "motivo": "maior média de CV",
+    "cv_A": 0.6707058307069886,
+    "cv_B": 0.6741845313242412,
+    "metrica": "f1_macro"
+  },
+  "cv": {
+    "modelo_A": {
+      "f1_macro": 0.6707058307069886,
+      "accuracy": 0.7254972500006738,
+      "precision_macro": 0.6658678457550293,
+      "recall_macro": 0.731250765684748,
+      "roc_auc": 0.8110251650012696
+    },
+    "modelo_B": {
+      "f1_macro": 0.6741845313242412,
+      "accuracy": 0.7382747088988955,
+      "precision_macro": 0.6648899231699582,
+      "recall_macro": 0.7205071032733649,
+      "roc_auc": 0.8016515293518403
+    }
+  },
+  "metricas_teste_vencedor": {
+    "f1_macro": 0.7134571239350074,
+    "accuracy": 0.7595978062157221,
+    "precision_macro": 0.7022826304946307,
+    "recall_macro": 0.7518751589117721,
+    "roc_auc": 0.8314400130761685
+  },
+  "metricas_teste_vigente_anterior": {
+    "f1_macro": 0.7045881468958393,
+    "accuracy": 0.7477148080438757,
+    "precision_macro": 0.6956568249893025,
+    "recall_macro": 0.7491282554211616,
+    "roc_auc": 0.8311176491954523
+  },
+  "decisao": {
+    "piso_metrica_cv": 0.6,
+    "limiar_melhoria": 0.005,
+    "cv_vencedor": 0.6741845313242412,
+    "teste_vencedor": 0.7134571239350074,
+    "teste_vigente": 0.7045881468958393,
+    "delta_teste": 0.008868977039168113,
+    "decisao": "promovido",
+    "motivo": "melhora de 0.0089 >= limiar 0.005"
+  },
+  "modelo_vigente_apos_ciclo": "C004_20261126T033330Z_random_forest",
+  "run_ids": {
+    "etl": "fe26636e572b4f71912b8650ee07caa8",
+    "votacao": "a5e8e2bf4602467c999e423c2cc65714",
+    "modelo_A": "5402a1eaaddb425bb4be290ea8c32f24",
+    "modelo_B": "0d83d8ac78dd442a8e5048fe4179eeac"
+  },
+  "drift": {
+    "avaliado": true,
+    "n_ref": 4600,
+    "n_novo": 800,
+    "max_psi": 0.37742165898158486,
+    "atributo_max_psi": "mensalidade",
+    "n_features_alerta": 1,
+    "n_features_atencao": 2,
+    "taxa_alvo_ref": 0.20456521739130434,
+    "taxa_alvo_novo": 0.31125,
+    "alerta": true,
+    "features_em_alerta": [
+      "mensalidade"
+    ]
+  }
+}
