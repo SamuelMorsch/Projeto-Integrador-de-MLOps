@@ -1,0 +1,78 @@
+{
+  "cycle_id": "C005_20261126T165209Z",
+  "data_version": "v005_1b63121e73",
+  "folds": [
+    {
+      "fold": 0,
+      "eleitas": [
+        "num__tempo_contrato_meses",
+        "cat__tipo_contrato_mensal",
+        "num__mensalidade",
+        "num__chamados_suporte_3m",
+        "num__chamados_por_ano",
+        "num__gasto_por_servico",
+        "num__satisfacao",
+        "cat__tipo_contrato_bianual",
+        "num__atraso_pagamentos_6m"
+      ],
+      "n_colunas": 36
+    },
+    {
+      "fold": 1,
+      "eleitas": [
+        "num__tempo_contrato_meses",
+        "cat__tipo_contrato_mensal",
+        "num__gasto_por_servico",
+        "num__mensalidade",
+        "num__chamados_suporte_3m",
+        "cat__tipo_contrato_bianual",
+        "num__chamados_por_ano",
+        "num__uso_por_servico"
+      ],
+      "n_colunas": 36
+    },
+    {
+      "fold": 2,
+      "eleitas": [
+        "num__tempo_contrato_meses",
+        "cat__tipo_contrato_mensal",
+        "num__mensalidade",
+        "num__chamados_suporte_3m",
+        "cat__tipo_contrato_bianual",
+        "num__chamados_por_ano",
+        "num__gasto_por_servico",
+        "num__num_servicos",
+        "num__idade"
+      ],
+      "n_colunas": 36
+    },
+    {
+      "fold": 3,
+      "eleitas": [
+        "cat__tipo_contrato_mensal",
+        "num__tempo_contrato_meses",
+        "num__chamados_suporte_3m",
+        "num__satisfacao",
+        "num__mensalidade",
+        "num__chamados_por_ano",
+        "num__gasto_por_servico",
+        "cat__tipo_contrato_bianual"
+      ],
+      "n_colunas": 36
+    },
+    {
+      "fold": 4,
+      "eleitas": [
+        "num__tempo_contrato_meses",
+        "cat__tipo_contrato_mensal",
+        "num__gasto_por_servico",
+        "num__mensalidade",
+        "num__chamados_suporte_3m",
+        "cat__tipo_contrato_bianual",
+        "num__chamados_por_ano",
+        "num__uso_por_servico"
+      ],
+      "n_colunas": 36
+    }
+  ]
+}
