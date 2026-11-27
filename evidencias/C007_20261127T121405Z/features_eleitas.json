@@ -1,0 +1,16 @@
+{
+  "cycle_id": "C007_20261127T121405Z",
+  "features": [
+    "num__chamados_suporte_3m",
+    "cat__tipo_contrato_mensal",
+    "num__mensalidade",
+    "cat__tipo_contrato_bianual",
+    "num__chamados_por_ano",
+    "num__gasto_por_servico",
+    "num__tempo_contrato_meses",
+    "num__satisfacao",
+    "num__idade",
+    "num__atraso_pagamentos_6m",
+    "cat__plano_premium"
+  ]
+}

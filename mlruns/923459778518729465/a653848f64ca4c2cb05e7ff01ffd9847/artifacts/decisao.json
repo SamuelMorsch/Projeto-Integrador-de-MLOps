@@ -1,0 +1,89 @@
+{
+  "cycle_id": "C007_20261127T121405Z",
+  "data_version": "v007_4f092bbb0e",
+  "gatilho": "schedule",
+  "github_run_id": "45996815154",
+  "github_run_url": "https://github.com/SamuelMorsch/Projeto-Integrador-de-MLOps/actions/runs/45996815154",
+  "features_eleitas": [
+    "num__chamados_suporte_3m",
+    "cat__tipo_contrato_mensal",
+    "num__mensalidade",
+    "cat__tipo_contrato_bianual",
+    "num__chamados_por_ano",
+    "num__gasto_por_servico",
+    "num__tempo_contrato_meses",
+    "num__satisfacao",
+    "num__idade",
+    "num__atraso_pagamentos_6m",
+    "cat__plano_premium"
+  ],
+  "eleicao_vencedor": {
+    "vencedor": "modelo_B",
+    "motivo": "maior média de CV",
+    "cv_A": 0.6953038974828527,
+    "cv_B": 0.7016881631815283,
+    "metrica": "f1_macro"
+  },
+  "cv": {
+    "modelo_A": {
+      "f1_macro": 0.6953038974828527,
+      "accuracy": 0.7283990345937248,
+      "precision_macro": 0.6903339993576458,
+      "recall_macro": 0.7310206043723806,
+      "roc_auc": 0.8111206535974118
+    },
+    "modelo_B": {
+      "f1_macro": 0.7016881631815283,
+      "accuracy": 0.7398230088495575,
+      "precision_macro": 0.693997460292961,
+      "recall_macro": 0.7293204935412857,
+      "roc_auc": 0.8087163063113776
+    }
+  },
+  "metricas_teste_vencedor": {
+    "f1_macro": 0.7258059338417309,
+    "accuracy": 0.7552050473186119,
+    "precision_macro": 0.7180329949238579,
+    "recall_macro": 0.74711192166519,
+    "roc_auc": 0.8265311993004176
+  },
+  "metricas_teste_vigente_anterior": {
+    "f1_macro": 0.7098533825526159,
+    "accuracy": 0.7369085173501577,
+    "precision_macro": 0.7040281806879403,
+    "recall_macro": 0.7360323249989452,
+    "roc_auc": 0.8179820271778527
+  },
+  "decisao": {
+    "piso_metrica_cv": 0.6,
+    "limiar_melhoria": 0.005,
+    "cv_vencedor": 0.7016881631815283,
+    "teste_vencedor": 0.7258059338417309,
+    "teste_vigente": 0.7098533825526159,
+    "delta_teste": 0.01595255128911499,
+    "decisao": "promovido",
+    "motivo": "melhora de 0.0160 >= limiar 0.005"
+  },
+  "modelo_vigente_apos_ciclo": "C007_20261127T121405Z_random_forest",
+  "run_ids": {
+    "etl": "23e505c9adef4a16af6e991eda88ce83",
+    "votacao": "c53ac0a8c4d648bba2f9445965c5729d",
+    "modelo_A": "ccd42e1a6a19477eb37e43355c239f07",
+    "modelo_B": "dc749de8a51e46e0a9149a2e5c6afb4d"
+  },
+  "drift": {
+    "avaliado": true,
+    "n_ref": 7000,
+    "n_novo": 800,
+    "max_psi": 0.37041287872682727,
+    "atributo_max_psi": "mensalidade",
+    "n_features_alerta": 1,
+    "n_features_atencao": 5,
+    "taxa_alvo_ref": 0.25742857142857145,
+    "taxa_alvo_novo": 0.43375,
+    "alerta": true,
+    "features_em_alerta": [
+      "mensalidade"
+    ]
+  }
+}
