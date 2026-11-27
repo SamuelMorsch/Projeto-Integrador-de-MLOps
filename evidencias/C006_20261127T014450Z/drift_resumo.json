@@ -1,0 +1,15 @@
+{
+  "avaliado": true,
+  "n_ref": 6200,
+  "n_novo": 800,
+  "max_psi": 0.46386401320160714,
+  "atributo_max_psi": "mensalidade",
+  "n_features_alerta": 1,
+  "n_features_atencao": 4,
+  "taxa_alvo_ref": 0.2385483870967742,
+  "taxa_alvo_novo": 0.40375,
+  "alerta": true,
+  "features_em_alerta": [
+    "mensalidade"
+  ]
+}

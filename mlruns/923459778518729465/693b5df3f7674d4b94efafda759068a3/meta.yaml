@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Projeto-Integrador-de-MLOps/Projeto-Integrador-de-MLOps/mlruns/923459778518729465/693b5df3f7674d4b94efafda759068a3/artifacts
+end_time: 1795743916587
+entry_point_name: ''
+experiment_id: '923459778518729465'
+lifecycle_stage: active
+run_id: 693b5df3f7674d4b94efafda759068a3
+run_name: C006_20261127T014450Z__modelo_A_regressao_logistica
+run_uuid: 693b5df3f7674d4b94efafda759068a3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1795743916573
+status: 3
+tags: []
+user_id: runner
