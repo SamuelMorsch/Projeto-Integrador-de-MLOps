@@ -1,0 +1,15 @@
+{
+  "avaliado": true,
+  "n_ref": 9400,
+  "n_novo": 800,
+  "max_psi": 0.27533809946860655,
+  "atributo_max_psi": "chamados_suporte_3m",
+  "n_features_alerta": 1,
+  "n_features_atencao": 3,
+  "taxa_alvo_ref": 0.3103191489361702,
+  "taxa_alvo_novo": 0.51625,
+  "alerta": true,
+  "features_em_alerta": [
+    "chamados_suporte_3m"
+  ]
+}

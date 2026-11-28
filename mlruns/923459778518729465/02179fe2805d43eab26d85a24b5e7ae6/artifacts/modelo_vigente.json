@@ -1,0 +1,38 @@
+{
+  "modelo_id": "C007_20261127T121405Z_random_forest",
+  "algoritmo": "random_forest",
+  "chave": "modelo_B",
+  "cycle_id": "C007_20261127T121405Z",
+  "data_version": "v007_4f092bbb0e",
+  "features": [
+    "num__chamados_suporte_3m",
+    "cat__tipo_contrato_mensal",
+    "num__mensalidade",
+    "cat__tipo_contrato_bianual",
+    "num__chamados_por_ano",
+    "num__gasto_por_servico",
+    "num__tempo_contrato_meses",
+    "num__satisfacao",
+    "num__idade",
+    "num__atraso_pagamentos_6m",
+    "cat__plano_premium"
+  ],
+  "metrica": "f1_macro",
+  "valor_cv": 0.7016881631815283,
+  "valor_teste": 0.7258059338417309,
+  "run_id": "dc749de8a51e46e0a9149a2e5c6afb4d",
+  "caminho_modelo": "models/historico/C007_20261127T121405Z_random_forest.joblib",
+  "promovido_em_utc": "2026-11-27T12:14:30+00:00",
+  "decisao": "promovido",
+  "motivo": "melhora de 0.0160 >= limiar 0.005",
+  "modelo_anterior": "C004_20261126T033330Z_random_forest",
+  "ultima_avaliacao": {
+    "cycle_id": "C010_20261128T152939Z",
+    "data_version": "v010_bdc553b068",
+    "decisao": "mantido",
+    "motivo": "melhora de -0.0061 < limiar 0.005; vigente preservado",
+    "teste_candidato": 0.730214424951267,
+    "teste_vigente": 0.7362647064882677,
+    "delta_teste": -0.006050281537000712
+  }
+}

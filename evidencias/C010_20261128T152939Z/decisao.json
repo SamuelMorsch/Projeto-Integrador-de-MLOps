@@ -1,0 +1,88 @@
+{
+  "cycle_id": "C010_20261128T152939Z",
+  "data_version": "v010_bdc553b068",
+  "gatilho": "schedule",
+  "github_run_id": "46160065049",
+  "github_run_url": "https://github.com/SamuelMorsch/Projeto-Integrador-de-MLOps/actions/runs/46160065049",
+  "features_eleitas": [
+    "num__chamados_suporte_3m",
+    "cat__tipo_contrato_mensal",
+    "num__mensalidade",
+    "cat__tipo_contrato_bianual",
+    "num__chamados_por_ano",
+    "num__gasto_por_servico",
+    "num__tempo_contrato_meses",
+    "num__atraso_pagamentos_6m",
+    "num__uso_por_servico",
+    "num__uso_dados_gb"
+  ],
+  "eleicao_vencedor": {
+    "vencedor": "modelo_A",
+    "motivo": "empate técnico (|diferença| < 0.002); vence o modelo mais simples",
+    "cv_A": 0.7210424165594663,
+    "cv_B": 0.7222901924462741,
+    "metrica": "f1_macro"
+  },
+  "cv": {
+    "modelo_A": {
+      "f1_macro": 0.7210424165594663,
+      "accuracy": 0.7404001515725653,
+      "precision_macro": 0.716438977738783,
+      "recall_macro": 0.7401889864560667,
+      "roc_auc": 0.8209968511979
+    },
+    "modelo_B": {
+      "f1_macro": 0.7222901924462741,
+      "accuracy": 0.744953164077302,
+      "precision_macro": 0.7170166136889586,
+      "recall_macro": 0.7363438756420233,
+      "roc_auc": 0.8186992234400698
+    }
+  },
+  "metricas_teste_vencedor": {
+    "f1_macro": 0.730214424951267,
+    "accuracy": 0.7451830443159922,
+    "precision_macro": 0.7261073059360731,
+    "recall_macro": 0.74490502465186,
+    "roc_auc": 0.8319057407665004
+  },
+  "metricas_teste_vigente_anterior": {
+    "f1_macro": 0.7362647064882677,
+    "accuracy": 0.7504816955684007,
+    "precision_macro": 0.7321369749358992,
+    "recall_macro": 0.7519667393085114,
+    "roc_auc": 0.832714589676615
+  },
+  "decisao": {
+    "piso_metrica_cv": 0.6,
+    "limiar_melhoria": 0.005,
+    "cv_vencedor": 0.7210424165594663,
+    "teste_vencedor": 0.730214424951267,
+    "teste_vigente": 0.7362647064882677,
+    "delta_teste": -0.006050281537000712,
+    "decisao": "mantido",
+    "motivo": "melhora de -0.0061 < limiar 0.005; vigente preservado"
+  },
+  "modelo_vigente_apos_ciclo": "C007_20261127T121405Z_random_forest",
+  "run_ids": {
+    "etl": "158154b7a8374d22869edf996521f085",
+    "votacao": "ebf65006881842569fe2185ac0a3ce8c",
+    "modelo_A": "55ada7e5dd524e5197ea88f4e9041394",
+    "modelo_B": "f38218df46ca4bc7923e0d3fd23ebf16"
+  },
+  "drift": {
+    "avaliado": true,
+    "n_ref": 9400,
+    "n_novo": 800,
+    "max_psi": 0.27533809946860655,
+    "atributo_max_psi": "chamados_suporte_3m",
+    "n_features_alerta": 1,
+    "n_features_atencao": 3,
+    "taxa_alvo_ref": 0.3103191489361702,
+    "taxa_alvo_novo": 0.51625,
+    "alerta": true,
+    "features_em_alerta": [
+      "chamados_suporte_3m"
+    ]
+  }
+}

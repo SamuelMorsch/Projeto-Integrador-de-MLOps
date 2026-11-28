@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Projeto-Integrador-de-MLOps/Projeto-Integrador-de-MLOps/mlruns/923459778518729465/158154b7a8374d22869edf996521f085/artifacts
+end_time: 1795879780473
+entry_point_name: ''
+experiment_id: '923459778518729465'
+lifecycle_stage: active
+run_id: 158154b7a8374d22869edf996521f085
+run_name: C010_20261128T152939Z__etl_ingestao
+run_uuid: 158154b7a8374d22869edf996521f085
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1795879780464
+status: 3
+tags: []
+user_id: runner
