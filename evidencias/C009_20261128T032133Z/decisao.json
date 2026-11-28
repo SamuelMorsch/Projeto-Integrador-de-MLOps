@@ -1,0 +1,88 @@
+{
+  "cycle_id": "C009_20261128T032133Z",
+  "data_version": "v009_0492196107",
+  "gatilho": "schedule",
+  "github_run_id": "46102403470",
+  "github_run_url": "https://github.com/SamuelMorsch/Projeto-Integrador-de-MLOps/actions/runs/46102403470",
+  "features_eleitas": [
+    "num__chamados_suporte_3m",
+    "cat__tipo_contrato_mensal",
+    "num__mensalidade",
+    "cat__tipo_contrato_bianual",
+    "num__chamados_por_ano",
+    "num__gasto_por_servico",
+    "num__tempo_contrato_meses",
+    "num__idade",
+    "num__atraso_pagamentos_6m",
+    "cat__plano_premium"
+  ],
+  "eleicao_vencedor": {
+    "vencedor": "modelo_B",
+    "motivo": "maior média de CV",
+    "cv_A": 0.7164964010781822,
+    "cv_B": 0.7194404741382423,
+    "metrica": "f1_macro"
+  },
+  "cv": {
+    "modelo_A": {
+      "f1_macro": 0.7164964010781822,
+      "accuracy": 0.7397169951830675,
+      "precision_macro": 0.7111260631137167,
+      "recall_macro": 0.7396698258954304,
+      "roc_auc": 0.8227189035438514
+    },
+    "modelo_B": {
+      "f1_macro": 0.7194404741382423,
+      "accuracy": 0.7463958624859867,
+      "precision_macro": 0.7129690537935744,
+      "recall_macro": 0.736713482352941,
+      "roc_auc": 0.8192113029726004
+    }
+  },
+  "metricas_teste_vencedor": {
+    "f1_macro": 0.7195954932360542,
+    "accuracy": 0.7416317991631799,
+    "precision_macro": 0.7142655989742827,
+    "recall_macro": 0.7334613096240417,
+    "roc_auc": 0.8222551517941004
+  },
+  "metricas_teste_vigente_anterior": {
+    "f1_macro": 0.7274780433974435,
+    "accuracy": 0.7463389121338913,
+    "precision_macro": 0.7224176707552794,
+    "recall_macro": 0.7457219621534443,
+    "roc_auc": 0.826197969093601
+  },
+  "decisao": {
+    "piso_metrica_cv": 0.6,
+    "limiar_melhoria": 0.005,
+    "cv_vencedor": 0.7194404741382423,
+    "teste_vencedor": 0.7195954932360542,
+    "teste_vigente": 0.7274780433974435,
+    "delta_teste": -0.007882550161389279,
+    "decisao": "mantido",
+    "motivo": "melhora de -0.0079 < limiar 0.005; vigente preservado"
+  },
+  "modelo_vigente_apos_ciclo": "C007_20261127T121405Z_random_forest",
+  "run_ids": {
+    "etl": "8e427ac8d1f44707b56a457927f767a9",
+    "votacao": "4ae8d1d515dc49f1abdcfcaddd0d212e",
+    "modelo_A": "6a71fec1b6634b7c9adb19ea78cf584f",
+    "modelo_B": "0f792f03f1c842afbda6ab50597a0c50"
+  },
+  "drift": {
+    "avaliado": true,
+    "n_ref": 8600,
+    "n_novo": 800,
+    "max_psi": 0.33409021300403113,
+    "atributo_max_psi": "mensalidade",
+    "n_features_alerta": 1,
+    "n_features_atencao": 4,
+    "taxa_alvo_ref": 0.2931395348837209,
+    "taxa_alvo_novo": 0.495,
+    "alerta": true,
+    "features_em_alerta": [
+      "mensalidade"
+    ]
+  }
+}

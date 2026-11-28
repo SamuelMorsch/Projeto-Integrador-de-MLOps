@@ -1,0 +1,14 @@
+feature,folds_eleita,eleita_no_ciclo
+cat__tipo_contrato_bianual,5,1
+cat__tipo_contrato_mensal,5,1
+num__chamados_por_ano,5,1
+num__chamados_suporte_3m,5,1
+num__gasto_por_servico,5,1
+num__mensalidade,5,1
+num__tempo_contrato_meses,5,1
+num__uso_dados_gb,4,0
+num__satisfacao,3,0
+num__atraso_pagamentos_6m,2,1
+num__num_servicos,2,0
+cat__plano_premium,1,1
+num__idade,1,1
